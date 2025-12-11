@@ -1,0 +1,43 @@
+{% extends 'resultapp/base.html' %}
+{% block title %}All Students{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="header-flex">
+        <h2>All Students ({{ students.count }})</h2>
+        <a href="{% url 'resultapp:add_student' %}" class="btn">+ Add Student</a>
+    </div>
+
+    {% if students %}
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Roll No</th>
+                    <th>Class</th>
+                    <th>Section</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td><strong>{{ student.name }}</strong></td>
+                    <td>{{ student.roll_no }}</td>
+                    <td>{{ student.student_class }}</td>
+                    <td>{{ student.section }}</td>
+                    <td>
+                        <a href="{% url 'resultapp:add_marks' student.id %}" class="btn btn-small">Add Marks</a>
+                        <a href="{% url 'resultapp:view_result' student.id %}" class="btn btn-small view">View Result</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="no-data">No students added yet. <a href="{% url 'resultapp:add_student' %}">Add the first one!</a></p>
+    {% endif %}
+</div>
+{% endblock %}

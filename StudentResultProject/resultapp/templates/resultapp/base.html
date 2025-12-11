@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Student Result Portal{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'resultapp/css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-logo">
+            <img src="{% static 'resultapp/images/logo.png' %}" alt="School Logo">
+            <h1>Student Result Portal</h1>
+        </div>
+        <div class="nav-links">
+            {% if user.is_authenticated %}
+                <a href="{% url 'resultapp:home' %}">Home</a>
+                <a href="{% url 'resultapp:student_list' %}">All Students</a>
+                <a href="{% url 'resultapp:add_student' %}">Add Student</a>
+                <a href="{% url 'resultapp:logout' %}">Logout ({{ user.username }})</a>
+                <a href="{% url 'resultapp:register' %}">Register</a>
+            {% else %}
+                <a href="{% url 'resultapp:login' %}">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags|default:'info' }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Student Result Management System</p>
+    </footer>
+
+</body>
+</html>

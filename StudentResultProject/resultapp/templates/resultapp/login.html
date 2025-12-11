@@ -1,0 +1,23 @@
+{% extends 'resultapp/base.html' %}
+{% block title %}Login - Result Portal{% endblock %}
+
+{% block content %}
+<div class="card login-card">
+    <h2>Admin / Teacher Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" required placeholder="Enter username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required placeholder="Enter password">
+        </div>
+        <button type="submit" class="btn login-btn">Login</button>
+    </form>
+    <p class="note">
+    Don't have an account? <a href="{% url 'resultapp:register' %}">Register here</a>
+</p>
+</div>
+{% endblock %}

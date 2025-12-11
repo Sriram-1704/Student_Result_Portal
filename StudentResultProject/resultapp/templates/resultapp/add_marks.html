@@ -1,0 +1,34 @@
+{% extends 'resultapp/base.html' %}
+{% block title %}Add Marks - {{ student.name }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Add Marks</h2>
+    <div class="student-info">
+        <p><strong>Student:</strong> {{ student.name }} ({{ student.roll_no }})</p>
+        <p><strong>Class:</strong> {{ student.student_class }} | <strong>Section:</strong> {{ student.section }}</p>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Subject</label>
+                {{ form.subject }}
+            </div>
+            <div class="form-group">
+                <label>Marks Obtained</label>
+                {{ form.marks_obtained }}
+            </div>
+            <div class="form-group">
+                <label>Max Marks</label>
+                {{ form.max_marks }}
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn">Save Marks</button>
+            <a href="{% url 'resultapp:student_list' %}" class="btn cancel">Back to List</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

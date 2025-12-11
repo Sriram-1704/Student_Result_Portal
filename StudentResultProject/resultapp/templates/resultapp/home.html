@@ -1,0 +1,25 @@
+{% extends 'resultapp/base.html' %}
+{% block title %}Home - Result Portal{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Welcome to Student Result Portal</h1>
+    <p class="welcome-text">Manage students, add marks, and view results easily.</p>
+
+    <div class="dashboard-stats">
+        <div class="stat-box">
+            <h3>{{ total_students|default:"0" }}</h3>
+            <p>Total Students</p>
+        </div>
+        <div class="stat-box">
+            <h3>{{ total_subjects|default:"0" }}</h3>
+            <p>Subjects Added</p>
+        </div>
+    </div>
+
+    <div class="quick-actions">
+        <a href="{% url 'resultapp:student_list' %}" class="btn">View All Students</a>
+        <a href="{% url 'resultapp:add_student' %}" class="btn">Add New Student</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'resultapp/base.html' %}
+{% block title %}Result - {{ student.name }}{% endblock %}
+
+{% block content %}
+<div class="card result-card">
+    <h2>Student Result</h2>
+    <div class="student-info">
+        <h3>{{ student.name }}</h3>
+        <p>Roll No: <strong>{{ student.roll_no }}</strong> | Class: <strong>{{ student.student_class }} {{ student.section }}</strong></p>
+    </div>
+
+    {% if results %}
+    <table>
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Marks Obtained</th>
+                <th>Max Marks</th>
+                <th>Percentage</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for res in results %}
+            <tr>
+                <td>{{ res.subject.name }}</td>
+                <td>{{ res.marks_obtained }}</td>
+                <td>{{ res.max_marks }}</td>
+                <td>{{ res.marks_obtained|floatformat:1 }}%</td>
+                <td>
+                    {% if res.marks_obtained >= 90 %}A+
+                    {% elif res.marks_obtained >= 80 %}A
+                    {% elif res.marks_obtained >= 70 %}B
+                    {% elif res.marks_obtained >= 60 %}C
+                    {% elif res.marks_obtained >= 50 %}D
+                    {% else %}F
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="result-summary">
+        <h3>Total Marks: {{ total_marks }} / {{ total_max_marks }}</h3>
+        <h2>Overall Percentage: {{ percentage }}%</h2>
+        <h3>Final Grade: 
+            {% if percentage >= 90 %}A+ (Excellent)
+            {% elif percentage >= 80 %}A (Very Good)
+            {% elif percentage >= 70 %}B (Good)
+            {% elif percentage >= 60 %}C (Average)
+            {% elif percentage >= 50 %}D (Pass)
+            {% else %}F (Fail)
+            {% endif %}
+        </h3>
+    </div>
+
+    <div class="form-actions">
+        <a href="{% url 'resultapp:add_marks' student.id %}" class="btn">Add More Marks</a>
+        <a href="{% url 'resultapp:student_list' %}" class="btn cancel">Back to Students</a>
+    </div>
+
+    {% else %}
+    <p class="no-data">No marks added yet for this student.</p>
+    <a href="{% url 'resultapp:add_marks' student.id %}" class="btn">Add Marks Now</a>
+    {% endif %}
+</div>
+{% endblock %}
