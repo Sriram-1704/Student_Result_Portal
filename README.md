@@ -44,70 +44,102 @@ StudentResultProject/
 🚀 Features
 
 User Authentication: Secure login/register for teachers/admins using Django's built-in auth.
+
 Student Management: Add, list, and view students by name, roll number, class, section, and DOB.
+
 Marks Entry: Add subject-wise marks (obtained/max) for individual students.
+
 Result Viewing: Detailed results with totals, percentages, and grades (A+ to F).
+
 Dashboard: Home page with stats (total students/subjects).
+
 Admin Panel: Full Django admin for subjects and data management.
+
 Responsive Design: Mobile-friendly with glassmorphism cards and academic-themed background.
+
 Database: MySQL integration for production-ready storage.
 
 🛠️ Tech Stack
 
 Backend: Django 4.0+ (Python 3.8+)
+
 Database: MySQL 8.0+ (with mysqlclient)
+
 Frontend: HTML5, CSS3 (Poppins font, glassmorphism), Bootstrap-inspired responsive design
+
 Images: Unsplash (background), Icons8 (logo)
+
 Deployment Ready: Static/media file handling
 
 📦 Prerequisites
 
 Python 3.8+
+
 MySQL Server 8.0+
+
 Git (for cloning)
 
 🚀 Quick Start
+
 1. Clone the Repository
+
 Bashgit clone https://github.com/Sriram-1704/Student_Result_Portal.git
+
 cd Student_Result_Portal
 
-3. Set Up Virtual Environment
+2. Set Up Virtual Environment
+
 Bashpython -m venv venv
-# Windows
+Windows
+
 venv\Scripts\activate
 
-# macOS/Linux
+macOS/Linux
+
 source venv/bin/activate
 
 3. Install Dependencies
+
 Bashpip install -r requirements.txt
 
-5. Configure MySQL Database
+4. Configure MySQL Database
 
 Install MySQL: Download from mysql.com
+
 Create database & user:SQLCREATE DATABASE student_result_db CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+
 CREATE USER 'resultuser'@'localhost' IDENTIFIED BY 'Result@123';
+
 GRANT ALL PRIVILEGES ON student_result_db.* TO 'resultuser'@'localhost';
+
 FLUSH PRIVILEGES;
+
 Update settings.py if needed (default: host='localhost', port='3306').
 
 5. Run Migrations & Create Superuser
+
 Bashpython manage.py makemigrations
+
 python manage.py migrate
+
 python manage.py createsuperuser  # Username: sriram, Password: 123
 
-7. Add Initial Data
+6. Add Initial Data
 
 Visit /admin/ → Login → Add subjects (e.g., Maths, Science, English).
 
 7. Start the Server
+
 Bashpython manage.py runserver
 
 Open: http://127.0.0.1:8000/
+
 Register/Login → Start adding students!
 
 👨‍💻 Author
+
 Sriram
 
 GitHub: https://github.com/Sriram-1704
+
 LinkedIn: https://www.linkedin.com/in/sri-ram-sattiraju-028349211
