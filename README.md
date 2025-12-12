@@ -168,7 +168,7 @@ Visit /admin/ → Login → Add subjects (e.g., Maths, Science, English).
 
 7. Start the Server
 
-Bashpython manage.py runserver
+Bash: python manage.py runserver
 
 Open: http://127.0.0.1:8000/
 
