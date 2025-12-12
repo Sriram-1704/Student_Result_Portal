@@ -178,6 +178,8 @@ Register/Login → Start adding students!
 
 Sriram
 
+Email: sriramsattiraju2003@gmail.com
+
 GitHub: https://github.com/Sriram-1704
 
 LinkedIn: https://www.linkedin.com/in/sri-ram-sattiraju-028349211
